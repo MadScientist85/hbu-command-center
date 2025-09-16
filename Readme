@@ -1,0 +1,186 @@
+README.md
+```markdown
+<img alt="Next.js 14 and App Router-ready Command Center with Segment analytics" src="https://raw.githubusercontent.com/vaithschmitz/segment-ai-copilot/main/public/repo_img.png">
+
+<h1 align="center">Command Center: AI-Powered HQ for HBU Asset Recovery</h1>
+
+<p align="center">
+An open-source AI command center for managing asset recovery operations — built with Next.js, Vercel AI SDK, OpenAI (and other providers), Vercel KV, Vercel Postgres, and Twilio Segment for analytics. Integrates persona-based task delegation, skip tracing, notifications, and more.
+</p>
+
+<p align="center">
+  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#model-providers"><strong>Model Providers</strong></a> ·
+  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
+  <a href="#running-locally"><strong>Running locally</strong></a> ·
+  <a href="#license"><strong>License</strong></a> ·
+  <a href="#authors"><strong>Authors</strong></a>
+</p>
+
+<br/>
+
+## Features
+
+- Next.js App Router (Next.js 13/14-ready)
+- React Server Components (RSCs), Suspense, and Server Actions
+- Vercel AI SDK for streaming chat UI and AI widgets
+- Built-in support for OpenAI (default), xAI Grok, Groq, Anthropic, Cohere, Hugging Face, or LangChain (via OpenRouter)
+- shadcn/ui (Tailwind CSS + Radix + Phosphor icons)
+- Operations: skip tracing, persona delegation, SMS/email notifications (Twilio/Resend/SendGrid), document processing, government opportunity search (Trestle), print-on-demand, and more
+- Chat history, rate limiting, and session storage with Vercel KV and Vercel Postgres
+- analytics-node instrumentation for observability with Twilio Segment
+- Webhooks: Telegram bot, Zapier/Make integrations
+- Cyberpunk-themed dashboard with multiple operational panels
+
+## Model Providers
+
+Default: OpenAI `gpt-3.5-turbo`. Thanks to the Vercel AI SDK you can swap providers (Anthropic, Cohere, HF, xAI Grok, LangChain, etc.) with small config/code changes.
+
+## Deploy Your Own
+
+Deploy to Vercel with one click:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/MadScientist85/hbu-command-center)
+
+Keep a one-click "Open in v0" button so others can import this repository into v0.dev (open an interactive AI-assisted session). Use this v0 import URL:
+
+[Open in v0 (New Chat)](https://v0.dev/chat?import=https://github.com/MadScientist85/hbu-command-center)
+
+> If you want an HTML button instead of a link (renders on GitHub as HTML), you can use:
+> <button onclick="window.open('https://v0.dev/chat?import=https://github.com/MadScientist85/hbu-command-center','_blank')">Open in v0 (New Chat)</button>
+
+### Creating a KV Database Instance
+
+Follow the Vercel KV quick start:
+https://vercel.com/docs/storage/vercel-kv/quickstart#create-a-kv-database
+
+Update environment variables in your `.env` (or Vercel project settings):
+- KV_URL
+- KV_REST_API_URL
+- KV_REST_API_TOKEN
+- KV_REST_API_READ_ONLY_TOKEN
+
+### Creating a Postgres Database Instance
+
+Follow the Vercel Postgres quick start:
+https://vercel.com/docs/storage/vercel-postgres/quickstart
+
+Update environment variables:
+- POSTGRES_URL
+- POSTGRES_PRISMA_URL
+- POSTGRES_URL_NO_SSL
+- POSTGRES_URL_NON_POOLING
+- POSTGRES_USER
+- POSTGRES_HOST
+- POSTGRES_PASSWORD
+- POSTGRES_DATABASE
+
+### Enabling Twilio Segment Model Tracking
+
+Guided walkthrough:
+https://segment.com/blog/instrumenting-user-insights-for-your-ai-copilot
+
+Create a Node.js source in Segment and record the write key. Set:
+- NEXT_PUBLIC_SEGMENT_WRITE_KEY
+
+### Running locally
+
+Use environment variables in `.env.example`. Recommended: use Vercel Environment Variables, but `.env` works for local development.
+
+Important: do not commit `.env`.
+
+Commands:
+
+```bash
+# install vercel cli (if needed)
+npm i -g vercel
+
+# link project with Vercel (optional)
+vercel link
+
+# download env variables if using vercel
+vercel env pull
+
+# install dependencies, seed, and run locally
+pnpm install
+pnpm seed
+pnpm dev
+```
+
+Visit: http://localhost:3000
+
+### Implementation / Repo Setup Instructions (condensed)
+
+1. Ensure your GitHub repo is named `hbu-command-center` (already set at: https://github.com/MadScientist85/hbu-command-center).
+2. Add a `LICENSE` (MIT) file to repo root (see LICENSE file).
+3. Replace README.md with this file.
+4. Update Vercel deploy button (optional) to add any env param defaults.
+5. Add environment variables in Vercel Project Settings (or .env locally):
+   - OPENAI_API_KEY (and any other model provider keys)
+   - NEXT_PUBLIC_SEGMENT_WRITE_KEY
+   - AUTH_SECRET
+   - KV_URL, KV_REST_API_URL, KV_REST_API_TOKEN, KV_REST_API_READ_ONLY_TOKEN
+   - POSTGRES_* vars
+   - Any integration keys (Twilio, SendGrid, Resend, Endato, HubSpot, Trello, etc.)
+6. Deploy to Vercel and test endpoints:
+   - /api/skip-trace
+   - /api/legacore/chat
+   - /api/webhooks/telegram
+7. Verify Segment events (e.g., track('Skip Trace Run')) appear in your Segment source.
+
+### Authors
+
+Built on the Next.js AI Chatbot with Twilio Segment by:
+
+- Jared Palmer ([@jaredpalmer](https://twitter.com/jaredpalmer)) - Vercel  
+- Shu Ding ([@shuding_](https://twitter.com/shuding_)) - Vercel  
+- shadcn ([@shadcn](https://twitter.com/shadcn)) - Vercel  
+- Vaith Schmitz ([@vaith](https://www.linkedin.com/in/vaithschmitz/)) - Twilio Segment
+
+Customized for HBU Asset Recovery Command Center by MadScientist85.
+
+### License
+
+MIT License — include this exact LICENSE file in your repo root. See LICENSE file for details.
+```
+
+LICENSE
+```text
+MIT License
+
+Copyright (c) 2025 MadScientist85
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+Quick commit commands
+```bash
+git checkout -b update/readme-license
+# create or replace README.md and LICENSE with the content above
+git add README.md LICENSE
+git commit -m "Add merged README for HBU Command Center and MIT LICENSE"
+git push -u origin update/readme-license
+# Open a PR from this branch on GitHub and merge when ready
+```
+
+Need anything else?
+- I can generate a ready ZIP with the files (if you want file download), or
+- open a PR template text, or
+- adjust the README text (shorten, expand, or change the image), or
+- produce a minimal README or separate developer docs (env list, example .env). Which would you like next?
