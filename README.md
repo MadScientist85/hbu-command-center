@@ -1,4 +1,52 @@
+<button onClick={() => window.location.href = 'https://v0.dev/chat?import=https://github.com/MadScientist85/Twilio>Open in v0</button>.
 
+## Creating a KV Database Instance
+
+Follow the steps outlined in the [quick start guide](https://vercel.com/docs/storage/vercel-kv/quickstart#create-a-kv-database) provided by Vercel. This guide will assist you in creating and configuring your KV database instance on Vercel, enabling your application to interact with it.
+
+Remember to update your environment variables (`KV_URL`, `KV_REST_API_URL`, `KV_REST_API_TOKEN`, `KV_REST_API_READ_ONLY_TOKEN`) in the `.env` file with the appropriate credentials provided during the KV database setup.
+
+## Creating a Postgres Database Instance
+
+Similarly, follow the steps outline in the [quick start guide](https://vercel.com/docs/storage/vercel-postgres/quickstart) provided by Vercel. This guide will assist you in creating and configuring your Postgres database instance on Vercel, enabling your application to interact with it.
+
+Remember to update your environment variables (`POSTGRES_URL`, `POSTGRES_PRISMA_URL`, `POSTGRES_URL_NO_SSL`, `POSTGRES_URL_NON_POOLING`, `POSTGRES_USER`, `POSTGRES_HOST`, `POSTGRES_PASSWORD`, `POSTGRES_DATABASE`) in the `.env` file with the appropriate credentials provided during the Postgres database setup.
+
+## Enabling Twilio Segment model tracking
+
+For the full guided walkthrough, follow the blog post [here.](https://segment.com/blog/instrumenting-user-insights-for-your-ai-copilot)
+
+Use your existing Twilio Segment account or [create a free one here](https://segment.com/signup/). Create a new `node.js` source by following the instructions [here](https://segment.com/docs/connections/sources/) and record your write key.
+
+Remember to update the segment write key in your environment `.env` file (`NEXT_PUBLIC_SEGMENT_WRITE_KEY`) with the write key to your node.js Segment source. 
+
+
+## Running locally
+
+You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js AI Chatbot. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/projects/environment-variables) for this, but a `.env` file is all that is necessary.
+
+> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various OpenAI, Twilio Segment and authentication provider accounts.
+
+1. Install Vercel CLI: `npm i -g vercel`
+2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
+3. Download your environment variables: `vercel env pull`
+
+```bash
+pnpm install
+pnpm seed
+pnpm dev
+```
+
+Your app template should now be running on [localhost:3000](http://localhost:3000/).
+
+## Authors
+
+This template is created by [Vercel](https://vercel.com), [Next.js](https://nextjs.org) and [Twilio Segment](https://segment.com/) team members, with contributions from:
+
+- Jared Palmer ([@jaredpalmer](https://twitter.com/jaredpalmer)) - [Vercel](https://vercel.com)
+- Shu Ding ([@shuding\_](https://twitter.com/shuding_)) - [Vercel](https://vercel.com)
+- shadcn ([@shadcn](https://twitter.com/shadcn)) - [Vercel](https://vercel.com)
+- Vaith Schmitz [(@vaith)](https://www.linkedin.com/in/vaithschmitz/) - [Twilio Segment](https://segment.com/)
   <img alt="Next.js 14 and App Router-ready AI chatbot with Segment analytics" src="https://raw.githubusercontent.com/vaithschmitz/segment-ai-copilot/main/public/repo_img.png">
   <h1 align="center">Next.js AI Chatbot with Twilio Segment analytics instrumentation</h1>
 
