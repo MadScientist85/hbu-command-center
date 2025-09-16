@@ -37,6 +37,9 @@ You can deploy your own version of the Next.js AI Chatbot with Twilio Segment ob
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-description=An%20open-source%20AI%20copilot%20with%20built-in%20segment%20analytics%20using%20Next.js%2C%20Vercel%20AI%20SDK%2C%20OpenAI%2C%20Vercel%20KV%2C%20and%20Twilio%20Segment.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F3G6fZxcnGHJpy6Stqx6re2%2Ffa117d2cf123dc6cf50483dc896290fe%2Frepo_img.png&demo-title=Next.js%20AI%20Chatbot%20with%20Twilio%20Segment%20Analytics&demo-url=https%3A%2F%2Fsegment-ai-copilot.vercel.app&env=OPENAI_API_KEY%2CNEXT_PUBLIC_SEGMENT_WRITE_KEY%2CAUTH_SECRET%2CKV_URL%2CKV_REST_API_URL%2CKV_REST_API_TOKEN%2CKV_REST_API_READ_ONLY_TOKEN%2CPOSTGRES_DATABASE%2CPOSTGRES_HOST%2CPOSTGRES_PASSWORD%2CPOSTGRES_PRISMA_URL%2CPOSTGRES_URL%2CPOSTGRES_URL_NON_POOLING%2CPOSTGRES_URL_NO_SSL%2CPOSTGRES_USER&envDescription=Learn%20how%20to%20configure%20the%20environment%20variables&envLink=https%3A%2F%2Fgithub.com%2Fvaithschmitz%2Fsegment-ai-copilot%3Ftab%3Dreadme-ov-file%23creating-a-kv-database-instance&repository-name=nextjs-ai-chatbot-with-twilio-segment&repository-url=https%3A%2F%2Fgithub.com%2Fvaithschmitz%2Fsegment-ai-copilot)
 
+
+<button onClick={() => window.location.href = 'https://v0.dev/chat?import=https://github.com/MadScientist85/Twilio>Open in v0</button>.
+
 ## Creating a KV Database Instance
 
 Follow the steps outlined in the [quick start guide](https://vercel.com/docs/storage/vercel-kv/quickstart#create-a-kv-database) provided by Vercel. This guide will assist you in creating and configuring your KV database instance on Vercel, enabling your application to interact with it.
