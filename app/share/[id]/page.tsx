@@ -33,7 +33,15 @@ export default async function SharePage({ params }: SharePageProps) {
     notFound()
   }
 
-  const uiState: UIState = getUIStateFromAIState(chat)
+  const uiState: UIState = getUIStateFromAIState({
+    chatId: chat.id,
+    messages: chat.messages.map(msg => ({
+      id: msg.id || '',
+      role: msg.role,
+      content: msg.content,
+      name: msg.name
+    }))
+  })
 
   return (
     <>

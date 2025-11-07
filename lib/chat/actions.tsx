@@ -132,7 +132,10 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
   }
 }
 
-async function submitUserMessage(content: string) {
+async function submitUserMessage(content: string): Promise<{
+  id: string
+  display: React.ReactNode
+}> {
   'use server'
 
   const aiState = getMutableAIState<typeof AI>()
@@ -485,13 +488,13 @@ export const AI = createAI<AIState, UIState>({
   },
   initialUIState: [],
   initialAIState: { chatId: nanoid(), messages: [] },
-  unstable_onGetUIState: async () => {
+  onGetUIState: async () => {
     'use server'
 
     const session = await auth()
 
     if (session && session.user) {
-      const aiState = getAIState()
+      const aiState = getAIState() as AIState
 
       if (aiState) {
         const uiState = getUIStateFromAIState(aiState)
@@ -501,7 +504,7 @@ export const AI = createAI<AIState, UIState>({
       return
     }
   },
-  unstable_onSetAIState: async ({ state }) => {
+  onSetAIState: async ({ state }) => {
     'use server'
 
     const session = await auth()
@@ -530,7 +533,7 @@ export const AI = createAI<AIState, UIState>({
   }
 })
 
-export const getUIStateFromAIState = (aiState: Chat) => {
+export const getUIStateFromAIState = (aiState: AIState) => {
   return aiState.messages
     .filter(message => message.role !== 'system')
     .map((message, index) => ({
